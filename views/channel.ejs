@@ -1,0 +1,41 @@
+<%- include ('./partials/sidebar') %>
+<main>
+  <h1><%= channel.name %></h1>
+  <h2><%= channel.description %></h2>
+  <h3>Posts:</h3>
+  <ul id="postsUL">
+    <% channel.posts.forEach( post => { %>
+    <li>
+      <span><%= post.byId.name %> wrote on <%= post.date %>:</span><br /><span
+        ><%= post.content %></span
+      ><br />
+      <% if (user._id.toString() === post.byId._id.toString()) { %>
+      <span>
+        <a href="/channels/editPost/<%= channel._id %>/<%= post._id %> "
+          >Edit</a
+        >
+        <a href="/channels/deletePost/<%= channel._id %>/<%= post._id %> "
+          >Delete</a
+        >
+      </span>
+      <% } %>
+    </li>
+    <% }) %>
+  </ul>
+
+  <div>
+    <textarea
+      name="content"
+      cols="30"
+      rows="7"
+      placeholder="Post"
+      id="content"
+      autocomplete="off"
+      required
+    ></textarea
+    ><br />
+    <button id="postButton">Post</button>
+  </div>
+</main>
+<script src="../socket.io/socket.io.js"></script>
+<script src="/public/scripts/script.js"></script>

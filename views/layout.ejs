@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slack clone</title>
+    <link rel="stylesheet" href="/public/styles/style.css">
+  </head>
+  <header>
+    <nav>
+      <ul>
+        <li>
+          <a href="/channels">Home</a>
+        </li>
+        <% if (typeof user !== 'undefined') { %>
+          <li>
+            <span>Logged in as <%= user.name %></span>
+          </li>
+          <li>
+            <a href="/users/logout">Log Out</a>
+          </li>
+          <input type="text" value="<%= user.id %>" id="userId" hidden>
+        <% } else { %> 
+        <li>
+          <a href="/login">Log In</a>
+        </li>
+        <li>
+          <a href="/register">Register</a>
+        </li>
+        <% } %>
+      </ul>
+    </nav>
+  </header>
+  <body>
+    <%- body %>
+  </body>
+</html>

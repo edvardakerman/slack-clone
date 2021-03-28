@@ -1,0 +1,24 @@
+<%- include ('./partials/sidebar') %>
+<main>
+  <h1>This is your profile page</h1>
+    <h2>Feel free to edit your details</h2>
+    <% if (typeof message !== 'undefined') { %>
+      <p><%= message %></p>
+    <% } %>
+    <form method="POST" action="/users/profile">
+      <span>Name:</span><br />
+      <input type="text" name="newUserName" value="<%= user.name %>" /><br />
+      <span>Email:</span><br />
+      <input type="text" name="newUserEmail" value="<%= user.email %>" /><br />
+      <input type="submit" class="btn" value="Send changes" />
+    </form>
+    <hr>
+    <form action="/users/profile/uploadPhoto" method="POST" enctype="multipart/form-data" >
+      <img class="medium_image" src="<%= user.profilePhoto %> " alt="<%= user.name %>">
+      <p>Select new profile photo:</p>
+      <input type="file" name="profile_photo" ><br>
+      <input type="submit" value="Save" >
+    </form>
+</main>
+<script src="../../socket.io/socket.io.js"></script>
+<script src="/public/scripts/script.js"></script>

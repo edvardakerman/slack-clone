@@ -1,0 +1,11 @@
+<%- include ('./partials/sidebar') %>
+<main>
+  <h1>Welcome <%= user.name %></h1>
+  <h2>Create a new channel?</h2>
+  <form method="post" action="channels/create">
+    <input type="text" name="name" placeholder="Channel name here" /><br />
+    <input type="submit" value="Create Channel" />
+  </form>
+</main>
+<script src="../socket.io/socket.io.js"></script>
+<script src="/public/scripts/script.js"></script>

@@ -1,0 +1,27 @@
+<h1>Log in</h1>
+<% if (typeof message !== 'undefined') { %>
+<p><%= message %></p>
+<% } %>
+<form action="/users/login" method="POST">
+  <div class="">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      name="email"
+      placeholder="Enter Email"
+      autocomplete="username"
+      value="test@mail.com"
+    />
+  </div>
+  <div class="">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      name="password"
+      placeholder="Enter Password"
+      autocomplete="current-password"
+      value="tester123"
+    />
+  </div>
+  <button type="submit" class="">Sign in</button>
+</form>
